@@ -73,8 +73,8 @@ class ItemPage extends StatelessWidget {
                 ),
                 SizedBox(height: 10,),
                 Text(
-                   textAlign: TextAlign.end,
-                  '\Rp.${selectedItem.price}',
+                  
+                  '\IDR.${selectedItem.price}',
                  
                 )
               ]),
