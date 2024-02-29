@@ -4,15 +4,12 @@ import 'package:navigatorpush/models/item.dart';
 class ItemPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Retrieve the item from the route settings
     final Item? selectedItem =
         ModalRoute.of(context)?.settings.arguments as Item?;
-
     if (selectedItem == null) {
-      // Handle the case where the item is null, for example, show an error message
       return Scaffold(
         appBar: AppBar(
-          title: Text('Error'),
+          title: const Text('Error'),
         ),
         body: const Center(
           child: Text('Error: Item not found'),
@@ -21,13 +18,13 @@ class ItemPage extends StatelessWidget {
     } else {
       return Scaffold(
         appBar: AppBar(
-          title: Text('Item Page'),
+          title: const Text('Item Page'),
           backgroundColor: Colors.amber,
         ),
         body: Center(
           child: Container(
-            width: 200,
-            height: 265,
+            width: 500,
+            height: 1000,
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(15),
@@ -36,54 +33,53 @@ class ItemPage extends StatelessWidget {
                     color: Colors.grey.withOpacity(0.5),
                     spreadRadius: 3,
                     blurRadius: 10,
-                    offset: Offset(0, 3),
+                    offset: const Offset(0, 3),
                   )
                 ]),
             child: Padding(
-              
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: 
-              
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                
-                Container(
-                  alignment: Alignment.center,
-                  child: Image.network(
-                    selectedItem.image,
-                    height: 150,
-                    errorBuilder: (context, error, stackTrace) {
-                      return Text('Failed to load image');
-                    },
-                  ),
-                ),
-                Text(
-                  selectedItem.name,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24,
-                  ),
-                ),
-                Text(
-                  selectedItem.desc,
-                  style: TextStyle(
-                    fontSize: 14,
-                  ),
-                ),
-                SizedBox(height: 10,),
-                Text(
-                  
-                  '\IDR.${selectedItem.price}',
-                 
-                )
-              ]),
-              
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 20,),
+                    Container(
+                      
+                      alignment: Alignment.center,
+                      child: Image.network(
+                        selectedItem.image,
+                        height: 150,
+                        width: 150,
+                        errorBuilder: (context, error, stackTrace) {
+                          return const Icon(Icons.error);
+                        },
+                      ),
+                    ),
+                    Text(
+                      selectedItem.name,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24,
+                      ),
+                    ),
+                    Text(
+                      selectedItem.desc,
+                      style: const TextStyle(
+                        fontSize: 14,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 50,
+                    ),
+                    Text(
+                      '\IDR.${selectedItem.price}',style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30
+                      ),
+                    )
+                  ]),
             ),
-
           ),
         ),
-    
       );
     }
   }

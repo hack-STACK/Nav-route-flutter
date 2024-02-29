@@ -6,8 +6,6 @@ void main() {
   runApp(MyApp());
 }
 
-
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -24,12 +22,8 @@ class MyApp extends StatelessWidget {
 class page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-       
     return InkWell(
-     
       child: Container(
-        // Your InkWell child widget or any other UI elements.
-        // Example:
         padding: EdgeInsets.all(16),
         child: const Text(
           'Tap to navigate to Item Page',
